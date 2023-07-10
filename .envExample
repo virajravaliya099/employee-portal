@@ -1,3 +1,3 @@
-DB_URL="mongodb://localhost:27017/empoyee_portal_dummmy"
+DB_URL="mongodb://localhost:27017/empoyee_portal"
 SECRET="secret"
 EXPIRE="7d"

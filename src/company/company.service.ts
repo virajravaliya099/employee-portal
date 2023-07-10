@@ -9,6 +9,7 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { CompanyLoginDto } from './dto/login-company.dto';
 import { Role } from 'src/auth/guards/roles';
+import { retry } from 'rxjs';
 
 @Injectable()
 export class CompanyService {
@@ -108,6 +109,22 @@ export class CompanyService {
     return res.json({
       success: true,
       userData: req['user'],
+    });
+  }
+
+  async userFindAll(res: any) {
+    const data = await this.companyModel.find({}, { name: 1 }).lean();
+
+    if (!data) {
+      return res.json({
+        status: false,
+        message: 'No company found',
+      });
+    }
+
+    return res.json({
+      status: true,
+      data: data,
     });
   }
 

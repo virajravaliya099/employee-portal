@@ -29,18 +29,23 @@ export class CompanyController {
     return await this.companyService.companySignup(createCompanyDto, res);
   }
 
-  @Post('/login')
-  async companyLogin(
-    @Body() companyLoginDto: CompanyLoginDto,
-    @Res() res: Response,
-  ) {
-    return await this.companyService.companyLogin(companyLoginDto, res);
-  }
+  // @Post('/login')
+  // async companyLogin(
+  //   @Body() companyLoginDto: CompanyLoginDto,
+  //   @Res() res: Response,
+  // ) {
+  //   return await this.companyService.companyLogin(companyLoginDto, res);
+  // }
 
   @Get()
   @UseGuards(AuthGuard)
   findAll(@Req() req: Request, @Res() res: Response) {
     return this.companyService.findAll(req, res);
+  }
+
+  @Get('user/list')
+  userFindAll(@Res() res: Response) {
+    return this.companyService.userFindAll(res);
   }
 
   @Get(':id')

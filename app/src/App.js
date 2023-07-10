@@ -1,14 +1,18 @@
 import './App.css';
+import Routes from './routes/Index';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
+  const defaultTheme = createTheme();
+
   return (
-    <div className="App" style={{ display: 'flex' }}>
-      <header className="App-header">
-        <p>Ritesh Macwan</p>
-      </header>
-      <div>daweaw</div>
-      <div>daweaw</div>
-    </div>
+    <>
+      <ThemeProvider theme={defaultTheme}>
+        <CssBaseline />
+        <Routes />
+      </ThemeProvider>
+    </>
   );
 }
 
